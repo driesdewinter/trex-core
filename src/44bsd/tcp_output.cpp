@@ -88,7 +88,6 @@ static inline void tcp_pkt_update_len(struct tcpcb *tp,
 
         if (!tp->is_ipv6){
             uint16_t tlen=tp->offset_tcp-tp->offset_ip+tcp_h_pyld;
-            m->l2_len = tp->offset_ip;
             m->l3_len = tp->offset_tcp-tp->offset_ip;
             m->ol_flags |= (PKT_TX_IPV4 | PKT_TX_IP_CKSUM | PKT_TX_TCP_CKSUM);
             IPHeader * ipv4=(IPHeader *)(p+tp->offset_ip);
@@ -117,7 +116,6 @@ static inline void tcp_pkt_update_len(struct tcpcb *tp,
 
         }else{
             uint16_t tlen=tcp_h_pyld;
-            m->l2_len = tp->offset_ip;
             m->l3_len = tp->offset_tcp-tp->offset_ip;
             m->ol_flags |= ( PKT_TX_IPV6 | PKT_TX_TCP_CKSUM);
             IPv6Header * ipv6=(IPv6Header *)(p+tp->offset_ip);

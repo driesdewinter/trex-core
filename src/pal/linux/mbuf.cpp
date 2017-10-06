@@ -93,7 +93,6 @@ void rte_pktmbuf_reset(struct rte_mbuf *m)
     m->in_port = 0xff;
     m->ol_flags = 0;
     m->tso_segsz=0;
-    m->l2_len=0;
     m->l3_len=0;
     m->l4_len=0;
     m->vlan_tci=0;

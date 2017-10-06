@@ -2147,10 +2147,10 @@ inline void CFlowPktInfo::update_pkt_info2(char *p,
 
 inline void CFlowPktInfo::update_mbuf(rte_mbuf_t * m){
 
-    m->l2_len = m_pkt_indication.getFastIpOffsetFast();
+    uint16_t l2_len = m_pkt_indication.getFastIpOffsetFast();
     uint8_t l4_offset = m_pkt_indication.getFastTcpOffset();
-    BP_ASSERT(l4_offset > m->l2_len);
-    m->l3_len = l4_offset - m->l2_len ;
+    BP_ASSERT(l4_offset > l2_len);
+    m->l3_len = l4_offset - l2_len;
 
     if (CGlobalInfo::m_options.preview.getChecksumOffloadEnable()) {
 

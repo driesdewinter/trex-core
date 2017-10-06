@@ -66,7 +66,6 @@ struct rte_mbuf {
     uint16_t refcnt_reserved;
     uint64_t ol_flags;        /**< Offload features. */
     uint16_t tso_segsz;
-    uint16_t l2_len;
     uint16_t l3_len;
     uint16_t l4_len;
     uint16_t vlan_tci;
